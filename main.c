@@ -21,5 +21,6 @@ int main(int argc[], char *argv[]){
 
 
 void welcome_message(){
-	println("Welcome to ATM CLI\n Please enter your username: ")
+	printf("Welcome to BankCLI.\n Please enter your username: ")
+
 }
