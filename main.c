@@ -12,15 +12,31 @@
 
 
 #include <stdio.h>
+#include <unistd.h>
 
+void welcome_message(){
+	printf("Welcome to BankCLI.\n");
+
+}
+
+bool sign_in(){
+	int user_id;
+	printf("Please enter your user id: ");
+	scanf("%d", &user_id);
+	printf("\n ")
+	return false;
+}
+
+void clearScreen(){
+	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]";
+	write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+}
 
 
 int main(int argc[], char *argv[]){
+	bool signed_in;
+	
 	welcome_message();
+	signed_in = sign_in();
 }
 
-
-void welcome_message(){
-	printf("Welcome to BankCLI.\n Please enter your username: ")
-
-}
