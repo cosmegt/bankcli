@@ -14,21 +14,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int sign_in(){
-	int user_id;
-	int user_pin;
-	
-	user_id 	= prompt_user_id();
-	user_pin 	= prompt_user_pin();
-
-	return 0;
-}
-
 int prompt_user_id(){
 	int user_id;
 	printf("Please enter your user id: ");
 	scanf("%d", &user_id);
-	printf("\n");
 	
 	return user_id;
 }
@@ -37,9 +26,33 @@ int prompt_user_pin(){
 	int pin;
 	printf("Please enter your pin: ");
 	scanf("%d", &pin);
-	printf("\n");
 
 	return pin;
+}
+
+int validate_input(int id, int pin){
+	int valid_id, valid_pin;
+
+	valid_id	= (id > 0) ? 1 : 0;
+	valid_pin	= (pin > 999) ? 1 : 0;
+
+	return (valid_id && valid_pin);
+
+}
+
+int sign_in(){
+	int user_id, user_pin, valid_id, user_id;
+	
+	user_id		= prompt_user_id();
+	user_pin	= prompt_user_pin();
+
+	valid_id = validate_input(user_id, user_pin);
+
+	if(valid_id){
+		return user_id;
+	}else {
+		return 0;
+	}
 }
 
 void clearScreen(){
