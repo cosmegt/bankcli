@@ -14,29 +14,44 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void welcome_message(){
-	printf("Welcome to BankCLI.\n");
+int sign_in(){
+	int user_id;
+	int user_pin;
+	
+	user_id 	= prompt_user_id();
+	user_pin 	= prompt_user_pin();
 
+	return 0;
 }
 
-bool sign_in(){
+int prompt_user_id(){
 	int user_id;
 	printf("Please enter your user id: ");
 	scanf("%d", &user_id);
-	printf("\n ")
-	return false;
+	printf("\n");
+	
+	return user_id;
+}
+
+int prompt_user_pin(){
+	int pin;
+	printf("Please enter your pin: ");
+	scanf("%d", &pin);
+	printf("\n");
+
+	return pin;
 }
 
 void clearScreen(){
-	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]";
+	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]"; //Inserting an expression that takes inserts the whole screen.
 	write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 }
 
 
 int main(int argc[], char *argv[]){
-	bool signed_in;
+	int signed_in;
 	
-	welcome_message();
+	printf("Welcome to BankCLI.\n");
 	signed_in = sign_in();
 }
 
