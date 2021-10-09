@@ -40,8 +40,13 @@ int validate_input(int id, int pin){
 
 }
 
+void clearScreen(){
+	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]"; //Inserting an expression that takes inserts the whole screen.
+	write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+}
+
 int sign_in(){
-	int user_id, user_pin, valid_id, user_id;
+	int user_id, user_pin, valid_id;
 	
 	user_id		= prompt_user_id();
 	user_pin	= prompt_user_pin();
@@ -55,16 +60,24 @@ int sign_in(){
 	}
 }
 
-void clearScreen(){
-	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]"; //Inserting an expression that takes inserts the whole screen.
-	write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+int action_loop(){
+	while(1){
+
+	}
 }
 
 
 int main(int argc[], char *argv[]){
-	int signed_in;
+	int user;
 	
 	printf("Welcome to BankCLI.\n");
-	signed_in = sign_in();
+	user = sign_in();
+	if (user > 0){
+		printf("Welcome user, %d.\n", user);
+		action_loop();
+	}
+	else{
+		return 0;
+	}
 }
 
