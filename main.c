@@ -33,8 +33,8 @@ int prompt_user_pin(){
 int validate_input(int id, int pin){
 	int valid_id, valid_pin;
 
-	valid_id	= (id > 0) ? 1 : 0;
-	valid_pin	= (pin > 999) ? 1 : 0;
+	valid_id	= (id > 0);
+	valid_pin	= (pin > 999);
 
 	return (valid_id && valid_pin);
 
@@ -60,9 +60,40 @@ int sign_in(){
 	}
 }
 
-int action_loop(){
-	while(1){
+int view_balance(){
+	printf("You chose to view balance: \n");
+	return 0;
+}
 
+int deposit(){
+	printf("You chose to deposit: ");
+	return 0;
+}
+
+int withdrawal(){
+	printf("You chose to withdrawal: ");
+	return 0;
+}
+
+int action_loop(){
+
+	while(1){
+		int choose;
+		printf("What would you like to do? \n");
+		printf("1. View Balance		2. Deposit		3. Withdrawal \n");
+		scanf("%d", &choose);
+		printf("You chose: %d \n", choose);
+
+		switch(choose){
+			case(1): view_balance();
+				break;
+			case(2): deposit();
+				break;
+			case(3): withdrawal();
+				break;
+			default: printf("You must choose between, 1,2, or 3.\n");
+				break;
+		}
 	}
 }
 
