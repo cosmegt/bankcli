@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "/home/ubuntu/Projects/bankcli/lib/fsdb.h"
+
 int prompt_user_id(){
 	int user_id;
 	printf("Please enter your user id: ");
