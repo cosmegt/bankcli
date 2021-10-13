@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "/home/ubuntu/Projects/bankcli/lib/fsdb.h"
+#include "./lib/fsdb.h"
 
 int prompt_user_id(){
 	int user_id;
@@ -84,7 +84,6 @@ int action_loop(){
 		printf("What would you like to do? \n");
 		printf("1. View Balance		2. Deposit		3. Withdrawal \n");
 		scanf("%d", &choose);
-		printf("You chose: %d \n", choose);
 
 		switch(choose){
 			case(1): view_balance();
