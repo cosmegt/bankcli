@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 int check_user(char id[]){
     struct stat st = {0};
@@ -24,6 +25,19 @@ int check_user(char id[]){
         return 0;
     }
 }
+
+int read_int_from_file(char *path){
+    int num = 0;
+
+    printf("bitch");
+    FILE *ftpr = fopen(path, "r");
+    
+    fscanf(ftpr, "%d", &num);
+
+    fclose(ftpr);
+
+    return num;
+} 
 
 int auth0(char id[], char pin[]){
 
