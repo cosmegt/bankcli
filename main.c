@@ -64,11 +64,8 @@ int sign_in(){
 
 int view_balance(){
 	
-	printf("You chose to view balance: ");
-	// printf("bitch before a");
-	// char a[] = "./users/11/balance.txt";
-	// printf("bitch after a");
-	// read_int_from_file(a);
+	char a[] = "./users/11/balance.txt";
+	read_int_from_file(a);
 
 	return 0;
 
