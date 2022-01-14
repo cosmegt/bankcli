@@ -26,7 +26,7 @@ int check_user(char id[]){
     }
 }
 
-int read_int_from_file(char *path){
+int read_int_from_file(char *path){ // Remeber that for string you have to pass the pointer
     int num = 0;
 
     FILE *file = fopen(path, "r");

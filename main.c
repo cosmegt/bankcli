@@ -84,7 +84,7 @@ int view_balance(){
 	char a[] = "./build/users/11/balance.txt";
     int num = read_int_from_file(a);
     
-	printf("Your balance is: %d\n",num);
+	printf("Your balance is: $%d\n",num);
 
     return 0;
 
