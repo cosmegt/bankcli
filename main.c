@@ -16,6 +16,8 @@
 
 #include "./lib/fsdb.h"
 
+// Function methods
+
 int prompt_user_id(){
 	int user_id;
 	printf("Please enter your user id: ");
@@ -42,9 +44,8 @@ int validate_input(int id, int pin){
 
 }
 
-void clearScreen(){
-	const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e2J]"; //Inserting an expression that takes inserts the whole screen.
-	write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
+void clear_screen(){
+	system("clear");
 }
 
 int sign_in(){
@@ -62,11 +63,29 @@ int sign_in(){
 	}
 }
 
+void prompt_continue(){
+	int option;
+	printf("Would you like to continue? \n");
+	printf("1. Continue		2. Quit \n");
+	scanf("%d", &option);
+
+	if(option == 2){
+		exit(0);
+	}
+
+
+}
+
+
+// Action methods
+
 int view_balance(){
 
 	char a[] = "./build/users/11/balance.txt";
     int num = read_int_from_file(a);
-    printf("%d\n",num);
+    
+	printf("Your balance is: %d\n",num);
+
     return 0;
 
 }
@@ -85,9 +104,11 @@ int action_loop(){
 
 	while(1){
 		int choose;
+		clear_screen();
 		printf("What would you like to do? \n");
 		printf("1. View Balance		2. Deposit		3. Withdrawal \n");
 		scanf("%d", &choose);
+		clear_screen();
 
 		switch(choose){
 			case(1): view_balance();
@@ -99,6 +120,9 @@ int action_loop(){
 			default: printf("You must choose between, 1,2, or 3.\n");
 				break;
 		}
+
+		prompt_continue();
+
 	}
 }
 
@@ -106,6 +130,7 @@ int action_loop(){
 int main(int argc[], char *argv[]){
 	int user;
 	
+	clear_screen();
 	printf("Welcome to BankCLI.\n");
 	user = sign_in();
 	if (user > 0){

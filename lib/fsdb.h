@@ -31,6 +31,7 @@ int read_int_from_file(char *path){
 
     FILE *file = fopen(path, "r");
     fscanf (file, "%d", &num);
+    
     return num;
 } 
 
