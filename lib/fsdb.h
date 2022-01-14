@@ -29,13 +29,8 @@ int check_user(char id[]){
 int read_int_from_file(char *path){
     int num = 0;
 
-    printf("bitch");
-    FILE *ftpr = fopen(path, "r");
-    
-    fscanf(ftpr, "%d", &num);
-
-    fclose(ftpr);
-
+    FILE *file = fopen(path, "r");
+    fscanf (file, "%d", &num);
     return num;
 } 
 

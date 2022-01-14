@@ -63,11 +63,11 @@ int sign_in(){
 }
 
 int view_balance(){
-	
-	char a[] = "./users/11/balance.txt";
-	read_int_from_file(a);
 
-	return 0;
+	char a[] = "./build/users/11/balance.txt";
+    int num = read_int_from_file(a);
+    printf("%d\n",num);
+    return 0;
 
 }
 
