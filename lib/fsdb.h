@@ -27,19 +27,30 @@ int check_user(char id[]){
 }
 
 int read_int_from_file(char *path){ // Remeber that for string you have to pass the pointer
-    int num = 0;
+    int num;
 
     FILE *file = fopen(path, "r");
     fscanf (file, "%d", &num);
+    fclose(file);
     
     return num;
 } 
 
 int write_int_to_file(char *path, int value){
-    
+    int current, sum, result;
 
+    FILE *file = fopen(path, "r+");
+    fscanf(file, "%d", &current);
 
-    return value
+    sum = current + value;
+
+    fwrite(&sum, sizeof(int), 1, file);
+    fscanf(file, "%d", &result);
+
+    fclose(file);
+
+    printf("Debug: %d", sum);
+    return result;
 }
 
 int auth0(char id[], char pin[]){
