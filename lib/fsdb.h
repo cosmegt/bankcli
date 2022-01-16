@@ -35,6 +35,13 @@ int read_int_from_file(char *path){ // Remeber that for string you have to pass 
     return num;
 } 
 
+int write_int_to_file(char *path, int value){
+    
+
+
+    return value
+}
+
 int auth0(char id[], char pin[]){
 
     int user_exists = check_user(id);

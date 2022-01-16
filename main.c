@@ -49,18 +49,15 @@ void clear_screen(){
 }
 
 int sign_in(){
-	int user_id, user_pin, valid_id;
+	int user_id, user_pin, valid_id, result;
 	
 	user_id		= prompt_user_id();
 	user_pin	= prompt_user_pin();
 
 	valid_id = validate_input(user_id, user_pin);
 
-	if(valid_id){
-		return user_id;
-	}else {
-		return 0;
-	}
+	return valid_id || 0;
+
 }
 
 void prompt_continue(){
