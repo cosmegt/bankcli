@@ -37,22 +37,20 @@ int read_int_from_file(char *path){ // Remeber that for string you have to pass 
 } 
 
 int write_int_to_file(char *path, int value){
-    int current, sum, result;
-    char casted[18];
+    int current, sum;
 
-    FILE *file = fopen(path, "r"); // Read from file
+    FILE *file = fopen(path, "r");
     fscanf(file, "%d", &current);
-    freopen(path, "w", file);
+    freopen(path, "w", file); //Clear content
 
     sum = current + value;
 
-    fprintf(file, "%d", sum); // Write to file
-    fscanf(file, "%d", &result); //Write what works
+    fprintf(file, "%d", sum);
 
     fclose(file);
 
     printf("Your new balance is: %d", sum);
-    return result;
+    return sum;
 }
 
 int auth0(char id[], char pin[]){
