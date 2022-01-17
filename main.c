@@ -62,7 +62,7 @@ int sign_in(){
 
 void prompt_continue(){
 	int option;
-	printf("Would you like to continue? \n");
+	printf("\nWould you like to continue? \n");
 	printf("1. Continue		2. Quit \n");
 	scanf("%d", &option);
 
@@ -96,7 +96,6 @@ int deposit(){
 	scanf("%d", &dollars);
 
 	balance = write_int_to_file(a, dollars);
-	printf("\nYour new balance is: $%d\n", balance);
 
 	return 0;
 }

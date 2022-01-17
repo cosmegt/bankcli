@@ -51,7 +51,7 @@ int write_int_to_file(char *path, int value){
 
     fclose(file);
 
-    printf("Debug: %d", sum);
+    printf("Your new balance is: %d", sum);
     return result;
 }
 
