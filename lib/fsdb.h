@@ -40,8 +40,9 @@ int write_int_to_file(char *path, int value){
     int current, sum, result;
     char casted[18];
 
-    FILE *file = fopen(path, "r+"); // Read from file
+    FILE *file = fopen(path, "r"); // Read from file
     fscanf(file, "%d", &current);
+    freopen(path, "w", file);
 
     sum = current + value;
 
