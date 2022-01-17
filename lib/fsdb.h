@@ -38,14 +38,15 @@ int read_int_from_file(char *path){ // Remeber that for string you have to pass 
 
 int write_int_to_file(char *path, int value){
     int current, sum, result;
+    char casted[18];
 
-    FILE *file = fopen(path, "r+");
+    FILE *file = fopen(path, "r+"); // Read from file
     fscanf(file, "%d", &current);
 
     sum = current + value;
 
-    fwrite(&sum, sizeof(int), 1, file);
-    fscanf(file, "%d", &result);
+    fprintf(file, "%d", sum); // Write to file
+    fscanf(file, "%d", &result); //Write what works
 
     fclose(file);
 
