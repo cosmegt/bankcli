@@ -50,6 +50,25 @@ int deposit_balance(char *path, int value){
     return sum;
 }
 
+int withdrawal_balance(char *path, int value){
+    int current, sub;
+
+    FILE *file = fopen(path, "r");
+    fscanf(file, "%d", &current);
+    freopen(path, "w", file);
+
+    sub = current - value;
+    sub = (sub >= 0) ? sub :  0;
+
+    fprintf(file, "%d", sub);
+
+    fclose(file);
+
+    printf("You withdrew: $%d", value);
+    return sub;
+
+}
+
 int auth0(char id[], char pin[]){
 
     int user_exists = check_user(id);
@@ -64,7 +83,7 @@ int auth0(char id[], char pin[]){
     }
 }
 
-int change_pw(){
+int change_pin(){
 
 }
 

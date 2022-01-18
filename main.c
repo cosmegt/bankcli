@@ -101,7 +101,15 @@ int deposit(){
 }
 
 int withdrawal(){
-	printf("You chose to withdrawal: ");
+	int dollars, balance;
+	char a[] = "./build/users/11/balance.txt";
+
+	printf("How much would you like to widthdrawal? \n");
+	printf("Enter ammount in dollars: ");
+	scanf("%d", &dollars);
+
+	balance = withdrawal_balance(a, dollars);
+
 	return 0;
 }
 
