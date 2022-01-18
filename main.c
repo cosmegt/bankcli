@@ -79,7 +79,7 @@ void prompt_continue(){
 int view_balance(){
 
 	char a[] = "./build/users/11/balance.txt";
-    int balance = read_int_from_file(a);
+    int balance = read_balance(a);
     
 	printf("Your balance is: $%d\n",balance);
 
@@ -95,7 +95,7 @@ int deposit(){
 	printf("Enter ammount in dollars: ");
 	scanf("%d", &dollars);
 
-	balance = write_int_to_file(a, dollars);
+	balance = deposit_balance(a, dollars);
 
 	return 0;
 }

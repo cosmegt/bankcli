@@ -1,11 +1,8 @@
 /**
- * Querying CSV files in C
  * A quick library for BankCLI
+ * We're using the file system as a database to store users, passwords, and balance
  *
 */
-
-#ifndef fsdb_h
-#define fsdb_h
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -26,7 +23,7 @@ int check_user(char id[]){
     }
 }
 
-int read_int_from_file(char *path){ // Remeber that for string you have to pass the pointer
+int read_balance(char *path){ // Remeber that for string you have to pass the pointer
     int num;
 
     FILE *file = fopen(path, "r");
@@ -36,7 +33,7 @@ int read_int_from_file(char *path){ // Remeber that for string you have to pass 
     return num;
 } 
 
-int write_int_to_file(char *path, int value){
+int deposit_balance(char *path, int value){
     int current, sum;
 
     FILE *file = fopen(path, "r");
@@ -49,7 +46,7 @@ int write_int_to_file(char *path, int value){
 
     fclose(file);
 
-    printf("Your new balance is: %d", sum);
+    printf("Your new balance is: $%d", sum);
     return sum;
 }
 
@@ -87,13 +84,3 @@ int create_user(char id[]){
     }
 
 }
-
-int read_balance(){
-
-}
-
-int write_balance(){
-
-}
-
-#endif
