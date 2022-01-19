@@ -58,13 +58,13 @@ int withdrawal_balance(char *path, int value){
     freopen(path, "w", file);
 
     sub = current - value;
-    sub = (sub >= 0) ? sub :  0;
+    sub = (sub >= 0) ? sub :  current;
 
     fprintf(file, "%d", sub);
 
     fclose(file);
-
-    printf("You withdrew: $%d", value);
+     
+    printf("Your new balance is: $%d", sub);
     return sub;
 
 }
