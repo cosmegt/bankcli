@@ -10,19 +10,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-int check_user(char id[]){
-    struct stat st = {0};
-
-    char newdir[] = "./users/";
-    strcat(newdir, id);
-
-    if (stat(newdir, &st) == -1){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
 int read_balance(char *path){ // Remeber that for string you have to pass the pointer
     int num;
 
@@ -66,40 +53,5 @@ int withdrawal_balance(char *path, int value){
      
     printf("Your new balance is: $%d", sub);
     return sub;
-
-}
-
-int auth0(char id[], char pin[]){
-
-    int user_exists = check_user(id);
-    if(user_exists){
-        FILE *fp;
-
-        char newdir[] = "./users/";
-        strcat(newdir, id);
-        strcat(newdir, "password");
-        
-        fp = fopen(newdir, "r");
-    }
-}
-
-int change_pin(){
-
-}
-
-
-int create_user(char id[]){
-    int user_exists = check_user(id);
-    
-    if (user_exists == 0){
-        char newdir[] = "./users/";
-        strcat(newdir, id);
-        
-        mkdir(newdir, 0700);
-        return 1;
-    } else{
-        printf("Fuck your id.");
-        return 0;
-    }
 
 }

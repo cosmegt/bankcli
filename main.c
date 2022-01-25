@@ -6,17 +6,23 @@
  * That's it for now.
  *
  * This is just C language practice.
+ * 
+ * Update 1/25/2022 - I've learned a lot and this program's main functionality is done.
+ * Continuing this project is difficult because I did not knew anything about C structutures.
+ * If I had known better, I would have made a structure for a user, database, view-states.
+ * If you're reading this code, don't see this as a reflection of poor OOP design.
+ * Rather, a lack of understanding of structures in C.
  *
  * Author: Cosme Chavez
  * */
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
-
 #include "./lib/fsdb.h"
 
-// Function methods
+// Authentication methods
 
 int prompt_user_id(){
 	int user_id;
@@ -44,10 +50,6 @@ int validate_input(int id, int pin){
 
 }
 
-void clear_screen(){
-	system("clear");
-}
-
 int sign_in(){
 	int user_id, user_pin, valid_id, result;
 	
@@ -58,6 +60,15 @@ int sign_in(){
 
 	return valid_id || 0;
 
+}
+
+int sign_up(){
+	int new_id;
+
+	new_id = rand() % 100 + 1;
+	// create_user(new_id);
+
+	return 0;
 }
 
 void prompt_continue(){
@@ -73,8 +84,31 @@ void prompt_continue(){
 
 }
 
+int authentication(){
+	int existing, user;
+	printf("Are you an existing user?\n");
+	printf("1. Yes		2. No");
+	scanf("%d", &existing);
 
-// Action methods
+	if(existing == 1){
+		user = sign_in();
+		return user;
+	}
+	else{
+		// user = sign_up();
+		return 0;
+	}
+
+}
+
+// View methods
+
+void clear_screen(){
+	system("clear");
+}
+
+
+// Banking methods
 
 int view_balance(){
 
@@ -113,6 +147,8 @@ int withdrawal(){
 	return 0;
 }
 
+// Main program methods
+
 int action_loop(){
 
 	while(1){
@@ -145,7 +181,7 @@ int main(int argc[], char *argv[]){
 	
 	clear_screen();
 	printf("Welcome to BankCLI.\n");
-	user = sign_in();
+	user = authentication();
 	if (user > 0){
 		printf("Welcome user, %d.\n", user);
 		action_loop();
